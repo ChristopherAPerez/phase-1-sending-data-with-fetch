@@ -1,10 +1,10 @@
 // Add your code here
 function submitData(name, email){
-    fetch('http://localhost:3000/users', {
+    return fetch('http://localhost:3000/users', {
         method: "POST",
         headers: {
             "content-Type": "application/json",
-            accept: "application/json",
+            accept: "application/json"
         },
         body: JSON.stringify({
             name: name,
@@ -14,11 +14,12 @@ function submitData(name, email){
     .then(function(response) {
         return response.json();
     })
-    .then(function(object) {
-        console.log(object);
+    .then(function(json) {
+        document.querySelector('body').append(JSON.stringify(json))
     })
     .catch(function(error) {
         alert("Unauthorized Access");
-        console.log(error.message);
+        document.querySelector('body').append(error.message);
     })
 }
+
